@@ -8,28 +8,28 @@ import Download from './Download';
 
 const testimonials = [
   {
-    name: 'John Doe',
-    image: 'https://templates.envytheme.com/leve/default/assets/img/customer/customer-1.jpg', // Replace with actual image URLs
+    name: 'Leo Lucas',
+    image: 'https://i.pinimg.com/236x/62/ff/ec/62ffec20f5ed202dd49d9a86c75e379d.jpg', // Replace with actual image URLs
     text: 'This online banking service has transformed the way I manage my finances!',
   },
   {
-    name: 'Jane Smith',
+    name: 'Williams Smith',
     image: 'https://templates.envytheme.com/leve/default/assets/img/customer/customer-1.jpg',
     text: 'Fast, secure, and easy to use. Highly recommended!',
   },
   {
-    name: 'Alice Johnson',
-    image: 'https://templates.envytheme.com/leve/default/assets/img/customer/customer-1.jpg',
+    name: 'James Benjamin',
+    image: 'https://i.pinimg.com/236x/1f/5f/1a/1f5f1a450b40565369d89ed6e4557d17.jpg',
     text: 'The customer support is top-notch and always available to help.',
   },
   {
     name: 'Robert Brown',
-    image: 'https://templates.envytheme.com/leve/default/assets/img/customer/customer-2.jpg',
+    image: 'https://i.pinimg.com/236x/73/2a/6f/732a6fe6be4bb06e186f8f6d9ac01d09.jpg',
     text: 'A reliable banking platform with great features.',
   },
   {
     name: 'Emily Davis',
-    image: 'https://templates.envytheme.com/leve/default/assets/img/customer/customer-2.jpg',
+    image: 'https://i.pinimg.com/236x/74/ef/08/74ef08466e1c9cd715f4c3714dc91f51.jpg',
     text: 'I love how easy it is to track my spending and save for my goals.',
   },
   {

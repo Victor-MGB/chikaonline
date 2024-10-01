@@ -51,13 +51,20 @@ function WhyChoose() {
       works: 54285,
     };
 
+    const incrementRates = {
+      customers: Math.ceil(targetValues.customers / 100),
+      years: 1,
+      branches: Math.ceil(targetValues.branches / 100),
+      works: Math.ceil(targetValues.works / 100),
+    };
+
     // Interval to animate count
     const interval = setInterval(() => {
       setCounts(prevCounts => {
         const newCounts = { ...prevCounts };
         Object.keys(newCounts).forEach(key => {
           if (newCounts[key] < targetValues[key]) {
-            newCounts[key] += Math.ceil(targetValues[key] / 100); // Adjust increment rate for a smoother animation
+            newCounts[key] += incrementRates[key];
           }
         });
         return newCounts;
@@ -74,7 +81,7 @@ function WhyChoose() {
     <>
       <section className={`p-6 ${styles.section}`}>
         <div className="mb-8 text-center">
-          <h6 className={`text-sm font-bold uppercase ${styles.highlight} mb-2`}>Why choose us</h6>
+          <h6 className={`text-sm font-bold uppercase ${styles.highlight} mb-2`}>Why Choose Us</h6>
           <h1 className="text-3xl font-bold">
             Our bank has been providing services to its customers for almost 25 years.
           </h1>
@@ -83,26 +90,26 @@ function WhyChoose() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           {/* Happy Customers */}
           <div className={`p-4 ${styles.card} rounded-lg shadow-md hover:shadow-lg transition duration-300`}>
-            <p className="text-4xl font-bold">{counts.customers.toLocaleString()}</p>
-            <span className={`text-sm font-medium ${styles.textSecondary}`}>Happy customers</span>
+            <p className="text-4xl font-bold transition-opacity duration-500">{counts.customers.toLocaleString()}</p>
+            <span className={`text-sm font-medium ${styles.textSecondary}`}>Happy Customers</span>
           </div>
 
           {/* Years in Banking */}
           <div className={`p-4 ${styles.card} rounded-lg shadow-md hover:shadow-lg transition duration-300`}>
-            <p className="text-4xl font-bold">{counts.years}</p>
+            <p className="text-4xl font-bold transition-opacity duration-500">{counts.years}</p>
             <span className={`text-sm font-medium ${styles.textSecondary}`}>Years in Banking</span>
           </div>
 
           {/* Our Branches */}
           <div className={`p-4 ${styles.card} rounded-lg shadow-md hover:shadow-lg transition duration-300`}>
-            <p className="text-4xl font-bold">{counts.branches.toLocaleString()}</p>
+            <p className="text-4xl font-bold transition-opacity duration-500">{counts.branches.toLocaleString()}</p>
             <span className={`text-sm font-medium ${styles.textSecondary}`}>Our Branches</span>
           </div>
 
           {/* Successful Works */}
           <div className={`p-4 ${styles.card} rounded-lg shadow-md hover:shadow-lg transition duration-300`}>
-            <p className="text-4xl font-bold">{counts.works.toLocaleString()}</p>
-            <span className={`text-sm font-medium ${styles.textSecondary}`}>Successful works</span>
+            <p className="text-4xl font-bold transition-opacity duration-500">{counts.works.toLocaleString()}</p>
+            <span className={`text-sm font-medium ${styles.textSecondary}`}>Successful Works</span>
           </div>
         </div>
       </section>

@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { PiTidalLogo } from "react-icons/pi";
 import { IoMdClose } from 'react-icons/io';
 
-function Navbar() {
+function HeaderDashboard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <header className="bg-white dark:bg-gray-800 shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
-        {/* Left Container: Logo */}
-        <div className="flex items-center">
-          <PiTidalLogo className ="font-bold text-4xl text-yellow-700"/>
-        </div>
 
         {/* Middle Container: Navigation Links */}
         <nav className="hidden md:flex space-x-6 items-center">
@@ -81,8 +76,8 @@ function Navbar() {
 
 
           <NavLink to="/services" className="flex items-center space-x-1 hover:text-blue-600 font-bold uppercase dark:hover:text-yellow-700">Services</NavLink>
-#          <NavLink to="/blog" className="flex items-center space-x-1 hover:text-blue-600 font-bold uppercase dark:hover:text-yellow-700">Blog</NavLink>
-          <NavLink to="/contact" className="flex items-center space-x-1 hover:text-blue-600 font-bold uppercase dark:hover:text-yellow-700">Contact</NavLink>
+#          <NavLink to="/blog" className="hover:text-blue-600 dark:hover:text-blue-300">Blog</NavLink>
+          <NavLink to="/contact" className="hover:text-blue-600 dark:hover:text-blue-300">Contact</NavLink>
         </nav>
 
         {/* Right Container: Search and Button */}
@@ -156,4 +151,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default HeaderDashboard;
