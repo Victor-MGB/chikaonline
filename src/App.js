@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Preloader from "./components/loader/Preloader";
 import ThemeProvider from "./components/context/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher";
-import Home from './components/pages/Home';
 import TopHeader from "./components/top/TopHeader";
 import Navbar from "./components/nav/Navbar";
 import Footer from "./components/pages/footer/Footer";
@@ -29,6 +28,7 @@ import Clients from "./components/AdminDashboard/Clients";
 import Particular from "./components/AdminDashboard/Particular";
 import UserManagement from "./components/AdminDashboard/UserManagement";
 import SendNotification from "./components/AdminDashboard/SendNotification";
+import Home from "./components/pages/Home";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ function App() {
             <ThemeSwitcher />
             {/* Wrap the routes that should have Navbar and Footer */}
             <Routes>
-              <Route path="/" element={<><Navbar /><Home /><Footer /></>} />
+            <Route path="/" element={<><Navbar /><Home /><Footer /></>}/>
               <Route path="/credit-cards" element={<><Navbar /><CreditCard /><Footer /></>} />
               <Route path="/pricing" element={<><Navbar /><Pricing /><Footer /></>} />
               <Route path="/register" element={<><Navbar /><Registration /><Footer /></>} />
