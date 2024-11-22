@@ -14,7 +14,6 @@ function UserIcon() {
       <section className="container top-[10rem] mx-auto mt-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 
-          {/* Transfer Icon */}
 
           <div
             className="flex flex-col items-center justify-center p-4 rounded-lg transition-transform duration-200 hover:scale-105"
@@ -43,11 +42,6 @@ function UserIcon() {
           </div>
         </div>
       </section>
-
-      {/* Transfer Form (Visible when Transfer icon is clicked) */}
-      {/* {showTransferForm && (
-        
-      )} */}
       <Bills />
     </>
   );
