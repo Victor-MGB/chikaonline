@@ -118,13 +118,13 @@ function Contact1() {
                 <div className="max-w-3xl mx-auto space-y-6">
                     <div className="text-lg">
                         <h3 className="text-xl font-bold mb-2">Office</h3>
-                        <p>Leve Banking Corporation, 6890 Blvd, The Bronx, NY 1058, New York, USA</p>
+                        <p>Sheritage Banking Corporation, 6890 Blvd, The Bronx, NY 1058, New York, USA</p>
                     </div>
                     <div className="text-lg">
                         <h3 className="text-xl font-bold mb-2">Contact</h3>
-                        <p>+1(514)312-5678</p>
-                        <p>hello@leve.com</p>
-                        <p>fax@leve.com</p>
+                        <p>+447309652806</p>
+                        <p>sheritage144@gmail.com</p>
+                        {/* <p>fax@leve.com</p> */}
                     </div>
                     <div className="text-lg">
                         <h3 className="text-xl font-bold mb-2">Open hours</h3>
