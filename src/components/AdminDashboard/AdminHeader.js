@@ -60,6 +60,9 @@ function AdminHeader() {
                 <NavLink to="/terms-and-services" className="block px-4 py-2 hover:bg-gray-100">
                   Terms and Services
                 </NavLink>
+                <NavLink to="/approve-user" className="block text-gray-600 hover:text-blue-600 font-bold">
+              Approve-User
+            </NavLink>
               </div>
             )}
           </div>
@@ -123,6 +126,10 @@ function AdminHeader() {
             </NavLink>
             <NavLink to="/notification" className="block text-gray-600 hover:text-blue-600 font-bold">
               Send Notification
+            </NavLink>
+
+            <NavLink to="/approve-user" className="block text-gray-600 hover:text-blue-600 font-bold">
+              Approve-User
             </NavLink>
           </nav>
         </div>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { ThemeContext } from '../context/ThemeContext'; // Import ThemeContext
+import VideoComponent from "./VideoComponent"
 import WhyChoose from './WhyChoose';
 
 function Business() {
@@ -52,8 +53,10 @@ function Business() {
             ))}
           </div>
         </div>
-      </section>
+              <VideoComponent />
 
+      </section>
+      {/* <VideoComponent /> */}
       <WhyChoose />
     </>
   );

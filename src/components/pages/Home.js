@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
+import HeroCarousel from "../pages/HeroCarousel"
 import Protect from './Protect';
 
 function Home() {
@@ -23,7 +24,11 @@ function Home() {
 
   return (
     <>
-      <section className={`px-4 py-6 md:px-6 md:py-12 lg:py-16 ${themeStyles[theme]}`}>
+    <main>
+    <section>
+      <HeroCarousel />
+    </section>
+    <section className={`px-4 py-6 md:px-6 md:py-12 lg:py-16 ${themeStyles[theme]}`}>
         {/* Container for text content and call to action */}
         <div className={`flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 md:space-x-6 transition-all duration-700 ease-in-out ${animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           
@@ -65,6 +70,7 @@ function Home() {
           </div>
         </div>
       </section>
+    </main>
 
       <Protect />
     </>

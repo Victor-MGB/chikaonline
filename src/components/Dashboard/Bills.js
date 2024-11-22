@@ -5,6 +5,7 @@ import { GiLightBulb } from "react-icons/gi";
 import { FaWifi } from "react-icons/fa";
 import { IoTvOutline } from "react-icons/io5";
 import RecentTransaction from './RecentTransaction';
+import UserStage from './UserStage';
 
 function Bills() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,6 +99,7 @@ function Bills() {
       )}
 
       <RecentTransaction />
+      <UserStage />
     </>
   );
 }

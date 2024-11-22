@@ -20,7 +20,7 @@ import Login from "./components/auths/Login";
 import ForgotPassword from "./components/auths/ForgotPassword ";
 import ResetPassword from "./components/auths/ResetPassword ";
 import UserDashboard from "./components/Dashboard/UserDashboard";
-import Profile from "./components/Dashboard/Profile";
+// import Profile from "./components/Dashboard/Profile";
 import BankingBenefits from "./components/Dashboard/BankingBenefits";
 import AdminLogin from "./components/AdminDashboard/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
@@ -29,6 +29,8 @@ import Particular from "./components/AdminDashboard/Particular";
 import UserManagement from "./components/AdminDashboard/UserManagement";
 import SendNotification from "./components/AdminDashboard/SendNotification";
 import Home from "./components/pages/Home";
+import ApprovedStage from "./components/AdminDashboard/ApprovedStage"
+import UserStage from "./components/Dashboard/UserStage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -69,7 +71,7 @@ function App() {
               <Route path="/blog" element={<><Navbar /><Blogs /><Footer /></>} />
               <Route path="/contact" element={<><Navbar /><Contact /><Footer /></>} />
               <Route path="/dashboard" element={<UserDashboard />}/>
-              <Route path="/profile" element={<Profile />}/>
+              {/* <Route path="/profile" element={<Profile />}/> */}
               <Route path="/banking-benefits" element={<BankingBenefits />}/>
               <Route path="/admin" element={<AdminLogin />}/>
               <Route path="/admin-dashboard" element={<AdminDashboard />}/>
@@ -77,6 +79,8 @@ function App() {
               <Route path="/particular" element={<Particular />}/>
               <Route path="/manage" element={<UserManagement />}/>
               <Route path="/notification" element={<SendNotification />}/>
+              <Route path="/approve-user" element={<ApprovedStage />}/>
+              <Route path="/user-stage" element={<UserStage />}/>
             </Routes>
           </div>
         </main>
