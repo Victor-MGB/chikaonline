@@ -1,10 +1,10 @@
 import React from 'react';
-import { IoSendSharp, IoAddCircleOutline } from "react-icons/io5";
+import { IoAddCircleOutline } from "react-icons/io5";
 import { FaCreditCard } from "react-icons/fa6";
 import { RiBillLine } from "react-icons/ri";
 import Balance from './Balance';
 import Bills from './Bills';
-import UserStage from './UserStage';
+// import UserStage from './UserStage';
 
 function UserIcon() {
   return (
