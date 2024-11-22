@@ -10,6 +10,7 @@ const UserStage = () => {
   });
   const [stages, setStages] = useState([]);
   const [error, setError] = useState("");
+  const [stageError, setStageError] = useState(""); // Error specific to stages
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false); // Track form submission
 
@@ -99,6 +100,16 @@ const UserStage = () => {
   }, [fetchPendingStages]);
 
   const moveToNextStage = () => {
+    // Check if the current stage is approved
+    if (!stages[currentStageIndex]?.approved) {
+      setStageError("You cannot proceed to the next stage until this stage is approved.");
+      return;
+    }
+
+    // Clear any previous error
+    setStageError("");
+
+    // Proceed to the next stage
     if (currentStageIndex < stages.length - 1) {
       const nextIndex = currentStageIndex + 1;
       setCurrentStageIndex(nextIndex);
@@ -111,100 +122,104 @@ const UserStage = () => {
     saveToLocalStorage("formSubmitted", false);
     setStages([]);
     setCurrentStageIndex(0);
+    setStageError("");
   };
 
   return (
     <div className="withdrawal-form p-6 max-w-lg mx-auto bg-white rounded-lg shadow-lg">
-    <h2 className="text-3xl font-bold text-gray-800 mb-6">Create Withdrawal</h2>
-  
-    {formSubmitted ? (
-      <>
-        {stages.length > 0 && (
-          <div className="mt-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Pending Stages</h3>
-            <div className="space-y-6">
-              <div className="bg-gray-50 border-l-4 border-blue-500 p-4 rounded-lg shadow-md">
-                <strong className="text-lg text-blue-600">
-                  {stages[currentStageIndex]?.name}:
-                </strong>
-                <p className="mt-2 text-gray-600">{stages[currentStageIndex]?.description}</p>
-                <span className="block text-sm text-gray-500 mt-2">
-                  {currentStageIndex === stages.length - 1
-                    ? "Final Stage"
-                    : `Stage ${currentStageIndex + 1} of ${stages.length}`}
-                </span>
-              </div>
-  
-              {/* Progress Bar */}
-              <div className="relative pt-1">
-                <div className="flex mb-2 items-center justify-between">
-                  <div className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-teal-600 bg-teal-200">
-                    Progress
-                  </div>
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">Create Withdrawal</h2>
+
+      {formSubmitted ? (
+        <>
+          {stages.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Pending Stages</h3>
+              <div className="space-y-6">
+                <div className="bg-gray-50 border-l-4 border-blue-500 p-4 rounded-lg shadow-md">
+                  <strong className="text-lg text-blue-600">
+                    {stages[currentStageIndex]?.name}:
+                  </strong>
+                  <p className="mt-2 text-gray-600">{stages[currentStageIndex]?.description}</p>
+                  <span className="block text-sm text-gray-500 mt-2">
+                    {currentStageIndex === stages.length - 1
+                      ? "Final Stage"
+                      : `Stage ${currentStageIndex + 1} of ${stages.length}`}
+                  </span>
                 </div>
-                <div className="flex mb-2 items-center justify-between">
-                  <div className="w-full bg-gray-200 rounded-full">
-                    <div
-                      className="bg-green-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-                      style={{
-                        width: `${((currentStageIndex + 1) / stages.length) * 100}%`,
-                      }}
-                    >
-                      <span className="absolute right-0 top-0 mr-2 mt-1 text-white font-bold">
-                        {Math.floor(((currentStageIndex + 1) / stages.length) * 100)}%
-                      </span>
+
+                {/* Progress Bar */}
+                <div className="relative pt-1">
+                  <div className="flex mb-2 items-center justify-between">
+                    <div className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-teal-600 bg-teal-200">
+                      Progress
+                    </div>
+                  </div>
+                  <div className="flex mb-2 items-center justify-between">
+                    <div className="w-full bg-gray-200 rounded-full">
+                      <div
+                        className="bg-green-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                        style={{
+                          width: `${((currentStageIndex + 1) / stages.length) * 100}%`,
+                        }}
+                      >
+                        <span className="absolute right-0 top-0 mr-2 mt-1 text-white font-bold">
+                          {Math.floor(((currentStageIndex + 1) / stages.length) * 100)}%
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Next Stage Button */}
+                {currentStageIndex < stages.length - 1 && (
+                  <>
+                    <button
+                      onClick={moveToNextStage}
+                      className="w-full py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                    >
+                      Proceed to Next Stage
+                    </button>
+                    {stageError && <p className="mt-2 text-red-500">{stageError}</p>}
+                  </>
+                )}
               </div>
-  
-              {/* Next Stage Button */}
-              {currentStageIndex < stages.length - 1 && (
-                <button
-                  onClick={moveToNextStage}
-                  className="w-full py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
-                >
-                  Proceed to Next Stage
-                </button>
-              )}
             </div>
-          </div>
-        )}
-        <button
-          onClick={handleResetForm}
-          className="mt-4 py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-        >
-          Reset Withdrawal
-        </button>
-      </>
-    ) : (
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {["accountNumber", "amount", "currency", "description"].map((field) => (
-          <div key={field}>
-            <label className="block text-sm font-medium text-gray-700 capitalize">
-              {field}:
-            </label>
-            <input
-              type={field === "amount" ? "number" : "text"}
-              name={field}
-              value={formData[field]}
-              onChange={handleInputChange}
-              required={field !== "description"}
-              className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:ring focus:ring-blue-300"
-            />
-          </div>
-        ))}
-        <button
-          type="submit"
-          className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-        >
-          Create Withdrawal
-        </button>
-      </form>
-    )}
-  
-    {error && <p className="mt-4 text-red-500">{error}</p>}
-  </div>
+          )}
+          <button
+            onClick={handleResetForm}
+            className="mt-4 py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          >
+            Reset Withdrawal
+          </button>
+        </>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {["accountNumber", "amount", "currency", "description"].map((field) => (
+            <div key={field}>
+              <label className="block text-sm font-medium text-gray-700 capitalize">
+                {field}:
+              </label>
+              <input
+                type={field === "amount" ? "number" : "text"}
+                name={field}
+                value={formData[field]}
+                onChange={handleInputChange}
+                required={field !== "description"}
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:ring focus:ring-blue-300"
+              />
+            </div>
+          ))}
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          >
+            Create Withdrawal
+          </button>
+        </form>
+      )}
+
+      {error && <p className="mt-4 text-red-500">{error}</p>}
+    </div>
   );
 };
 
