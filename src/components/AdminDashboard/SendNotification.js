@@ -24,7 +24,7 @@ function SendNotification() {
 
     setLoading(true);
     try {
-      const response = await axios.post("/send-notification", { email, message });
+      const response = await axios.post("https://banking-system-jc25.onrender.com/api/users/send-notification", { email, message });
       setNotification(response.data.notification);
       setEmail("");
       setMessage("");
