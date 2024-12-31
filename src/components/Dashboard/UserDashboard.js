@@ -29,7 +29,7 @@ function UserDashboard() {
               <h6 className="text-gray-500 text-sm">Welcome <span> {user?.fullName} to</span></h6>
 
               </div>
-                <h4 className="text-lg font-bold text-gray-800">Online Banking System</h4>
+                <h4 className="text-lg font-bold text-gray-800">Sheritage Bank</h4>
                 <h3><small>Account Number:</small> {user?.accounts[0].accountNumber}</h3>
                 </div>
             </div>

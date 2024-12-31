@@ -32,14 +32,16 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-  "extends": [
-    "react-app",
-    "react-app/jest"
-  ],
-  "rules": {
-    "no-unused-vars": ["warn"]  
-  }
-},
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "no-unused-vars": [
+        "warn"
+      ]
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -55,10 +57,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@eslint/js": "^9.15.0",
-    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.37.2",
     "globals": "^15.12.0",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.10"
